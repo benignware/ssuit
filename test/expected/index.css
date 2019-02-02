@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+.Button {
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-width: 1px;
+  background: lightgray;
+  border-color: lightgray;
+  border-style: solid;
+}
+
+.Button--primary {
+  background: yellow;
+  border-color: yellow;
+}
+
+.Button--secondary {
+  background: peachpuff;
+  border-color: peachpuff;
+}
+
+.Button--secondary {
+  background: peachpuff;
+  border-color: peachpuff;
+}
+
+.Button--outline {
+  background: white;
+  border-color: lightgray;
+}
+
+.Button--outline.Button--primary {
+  border-color: yellow;
+}
+
+.Button--outline.Button--secondary {
+  border-color: peachpuff;
+}
+
+.Button .Button-label {
+  text-transform: uppercase;
+}
+
+.Button.is-disabled {
+  border-style: groove;
+}
+
+.ns-Button {
+  font-size: 30px;
+}
+
+.ns-Button--primary {
+  background: yellow;
+  border-color: yellow;
+  outline: 2px solid peachpuff;
+}
+
+.u-border  {
+  border: 1px solid gray;
+}
+
+.global-u-border  {
+  outline: 1px dashed blue;
+}
+
+.u-backgroundPrimary  {
+  background-color: yellow;
+}
+
+.u-backgroundSecondary  {
+  background-color: peachpuff;
+}
+
+.u-sm-backgroundSecondary  {
+  background-color: peachpuff;
+}

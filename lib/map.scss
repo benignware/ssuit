@@ -1,0 +1,15 @@
+@function varss--map-flatten($map, $delimiter: '-', $recursive: true, $prefix: '') {
+  $result: ();
+
+  @each $name, $value in $map {
+    @if ($recursive and type-of($value) == 'map') {
+      $result: map-merge($result, varss--map-flatten($value, $delimiter: $delimiter, $prefix: '#{$name}#{$delimiter}'));
+    } @else {
+      $result: map-merge($result, (
+        #{$prefix}#{$name}: #{$value}
+      ));
+    }
+  }
+
+  @return $result;
+}

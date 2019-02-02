@@ -1,0 +1,169 @@
+//@import './lib/map';
+@import './lib/string';
+
+$namespace: 'global' !default;
+$namespace-delimiter: '-' !default;
+
+$descendent-delimiter: '-' !default;
+
+$utility-prefix: 'u-' !default;
+$utility-style: camelCase !default;
+$utility-breakpoint-delimiter: '-' !default;
+$utility-value-delimiter: '' !default;
+
+$modifier-delimiter: '--' !default;
+$modifier-style: '' !default;
+$modifier-value-delimiter: '' !default;
+
+$state-prefix: 'is-' !default;
+
+@function namespace($name: $namespace, $delimiter: $namespace-delimiter) {
+  @return if(str-length($name) > 0, '#{$name}#{$delimiter}', '');
+}
+
+@function component(
+  $name
+) {
+  @return '#{$name}';
+}
+
+@function modifier(
+  $name,
+  $prefix: '',
+  $delimiter: $modifier-delimiter
+) {
+  @return '#{$prefix}#{$delimiter}#{$name}';
+}
+
+@function descendent(
+  $name,
+  $prefix: '',
+  $delimiter: $descendent-delimiter
+) {
+  @return '#{$prefix}#{$delimiter}#{$name}';
+}
+
+@function state(
+  $name,
+  $prefix: $state-prefix
+) {
+  @return '#{$prefix}#{$name}';
+}
+
+@function utility(
+  $name,
+  $value: '',
+  $breakpoint: '',
+  $prefix: $utility-prefix,
+  $style: $utility-style,
+  $breakpoint-delimiter: $utility-breakpoint-delimiter,
+  $value-delimiter: $utility-value-delimiter
+) {
+  $breakpoint-infix: if(str-length($breakpoint) > 0, $breakpoint + $breakpoint-delimiter, '');
+  $name-infix: #{$name};
+
+  @if (str-length($value) > 0) {
+    @if str-length($value-delimiter) > 0 {
+      $name-infix: '#{$name}#{$value-delimiter}#{$value}';
+    } @else {
+      $name-infix: '#{$name}-#{$value}';
+
+      @if $style == camelCase {
+        $name-infix: ssuit--string-camelize($name-infix);
+      }
+    }
+  }
+
+  @return '#{$prefix}#{$breakpoint-infix}#{$name-infix}';
+}
+
+@mixin namespace(
+  $name: $namespace,
+  $delimiter: $namespace-delimiter
+) {
+  @if str-length($name) > 0 {
+    $dot-infix: if(str-length(#{&}) == 0, '.', '');
+    &#{$dot-infix}#{namespace(
+      $name: $name,
+      $delimiter: $delimiter
+    )} {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin component(
+  $name
+) {
+  $dot-infix: if(str-length(#{&}) == 0, '.', '');
+  &#{$dot-infix}#{component(
+    $name
+  )} {
+    @content;
+  }
+}
+
+@mixin modifier(
+  $name,
+  $prefix: '',
+  $delimiter: $modifier-delimiter
+) {
+  &#{modifier(
+    $name,
+    $prefix: $prefix,
+    $delimiter: $delimiter
+  )} {
+    @content;
+  }
+}
+
+@mixin descendent(
+  $name,
+  $prefix: '',
+  $delimiter: $descendent-delimiter
+) {
+  #{&}#{descendent(
+    $name,
+    $prefix: $prefix,
+    $delimiter: $delimiter
+  )} {
+    @content;
+  }
+}
+
+@mixin state(
+  $name,
+  $prefix: $state-prefix
+) {
+  &.#{state(
+    $name,
+    $prefix: $prefix
+  )} {
+    @content;
+  }
+}
+
+@mixin utility(
+  $name,
+  $value: '',
+  $breakpoint: '',
+  $prefix: $utility-prefix,
+  $style: $utility-style,
+  $breakpoint-delimiter: $utility-breakpoint-delimiter,
+  $value-delimiter: $utility-value-delimiter
+) {
+  $dot-infix: if(str-length(#{&}) == 0, '.', '');
+  &#{$dot-infix}#{utility(
+    $name,
+    $value,
+    $breakpoint: $breakpoint,
+    $prefix: $prefix,
+    $style: $style,
+    $breakpoint-delimiter: $breakpoint-delimiter,
+    $value-delimiter: $value-delimiter
+  )} {
+    @content;
+  }
+}

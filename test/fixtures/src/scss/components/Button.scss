@@ -1,0 +1,59 @@
+@include component('Button') {
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-width: 1px;
+  background: lightgray;
+  border-color: lightgray;
+  border-style: solid;
+  $self: &;
+
+  @include modifier('primary') {
+    background: yellow;
+    border-color: yellow;
+  }
+
+  @include modifier('secondary') {
+    background: peachpuff;
+    border-color: peachpuff;
+  }
+
+  &#{modifier('secondary')} {
+    background: peachpuff;
+    border-color: peachpuff;
+  }
+
+  @include modifier('outline') {
+    background: white;
+    border-color: lightgray;
+
+    &#{$self}#{modifier('primary')} {
+      border-color: yellow;
+    }
+
+    &#{$self}#{modifier('secondary')} {
+      border-color: peachpuff;
+    }
+  }
+
+  @include descendent('label') {
+    text-transform: uppercase;
+  }
+
+  @include state('disabled') {
+    border-style: groove;
+  }
+}
+
+@include namespace('ns') {
+  @include component('Button') {
+    //@extend .Button;
+    font-size: 30px;
+
+    @include modifier('primary') {
+      background: yellow;
+      border-color: yellow;
+      outline: 2px solid peachpuff;
+    }
+  }
+}

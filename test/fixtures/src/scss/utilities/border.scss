@@ -1,0 +1,9 @@
+@include utility('border') {
+  border: 1px solid gray;
+}
+
+@include namespace() {
+  @include utility('border') {
+    outline: 1px dashed blue;
+  }
+}
