@@ -11,7 +11,7 @@ npm i ssuit -D
 
 ## Usage
 
-ssuit consists of several mixins and functions representing modular css structures, e.g. components, modifier etc, thus it provides an abstraction layer which hides all the ugly shit from your source.
+ssuit consists of several mixins and functions representing modular css structures, e.g. components, modifiers etc, thus it provides an abstraction layer which hides all the ugly shit from your source.
 
 > Note: `ssuit` is intented for being used at application level and is currently not suited for being incorporated into a dedicated scss library
 
