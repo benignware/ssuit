@@ -46,7 +46,7 @@ $utility-value-delimiter: '' !default;
   $name,
   $prefix: $state-prefix
 ) {
-  @return '#{$prefix}#{$name}';
+  @return '.#{$prefix}#{$name}';
 }
 
 @function utility(
@@ -136,7 +136,7 @@ $utility-value-delimiter: '' !default;
   $name,
   $prefix: $state-prefix
 ) {
-  &.#{state(
+  &#{state(
     $name,
     $prefix: $prefix
   )} {

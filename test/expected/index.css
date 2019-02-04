@@ -30,11 +30,11 @@
   border-color: lightgray;
 }
 
-.Button--outline.Button--primary {
+.Button--outline--primary {
   border-color: yellow;
 }
 
-.Button--outline.Button--secondary {
+.Button--outline--secondary {
   border-color: peachpuff;
 }
 
@@ -44,6 +44,10 @@
 
 .Button.is-disabled {
   border-style: groove;
+}
+
+.Button.is-disabled {
+  background: pink;
 }
 
 .ns-Button {

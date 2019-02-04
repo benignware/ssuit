@@ -1,6 +1,6 @@
 {
   "name": "ssuit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A scss library for creating modular css",
   "main": "ssuit.scss",
   "repository": {

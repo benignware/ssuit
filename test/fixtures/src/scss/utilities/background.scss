@@ -1,11 +1,11 @@
-@include utility('background', 'primary') {
+@include utility('background', primary) {
   background-color: yellow;
 }
 
-@include utility('background', 'secondary') {
+@include utility('background', secondary) {
   background-color: peachpuff;
 }
 
-@include utility('background', 'secondary', $breakpoint: 'sm') {
+@include utility('background', secondary, $breakpoint: sm) {
   background-color: peachpuff;
 }
