@@ -1,8 +1,13 @@
-//@import './lib/map';
 @import './lib/string';
 
 $namespace: 'global' !default;
 $namespace-delimiter: '-' !default;
+
+$modifier-delimiter: '--' !default;
+$modifier-style: '' !default;
+$modifier-value-delimiter: '' !default;
+
+$state-prefix: 'is-' !default;
 
 $descendent-delimiter: '-' !default;
 
@@ -10,12 +15,6 @@ $utility-prefix: 'u-' !default;
 $utility-style: camelCase !default;
 $utility-breakpoint-delimiter: '-' !default;
 $utility-value-delimiter: '' !default;
-
-$modifier-delimiter: '--' !default;
-$modifier-style: '' !default;
-$modifier-value-delimiter: '' !default;
-
-$state-prefix: 'is-' !default;
 
 @function namespace($name: $namespace, $delimiter: $namespace-delimiter) {
   @return if(str-length($name) > 0, '#{$name}#{$delimiter}', '');

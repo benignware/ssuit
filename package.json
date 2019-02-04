@@ -5,10 +5,10 @@
   "main": "ssuit.scss",
   "repository": {
     "type": "git",
-    "url": "https://github.com/benignware/varss.git"
+    "url": "https://github.com/benignware/ssuit.git"
   },
   "bugs": {
-    "url": "https://github.com/benignware/varss/issues"
+    "url": "https://github.com/benignware/ssuit/issues"
   },
   "scripts": {
     "clean": "rm -rf tmp",
