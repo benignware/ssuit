@@ -203,7 +203,7 @@ Which results in:
 ssuit can be configured by global variables. Please note that if you plan to build some scss-library on top of ssuit, you shouldn't touch variables but instead pass in all your specific parameters as arguments to the individual mixins and functions.
 
 ```scss
-$namespace: 'global' !default;
+$namespace: '' !default;
 $namespace-delimiter: '-' !default;
 
 $modifier-delimiter: '--' !default;
