@@ -73,7 +73,7 @@ $utility-value-delimiter: '' !default;
     }
   }
 
-  @return '#{$prefix}#{$breakpoint-infix}#{$name-infix}';
+  @return $prefix + $breakpoint-infix + $name-infix;
 }
 
 @mixin namespace(
@@ -153,7 +153,7 @@ $utility-value-delimiter: '' !default;
   $breakpoint-delimiter: $utility-breakpoint-delimiter,
   $value-delimiter: $utility-value-delimiter
 ) {
-  $dot-infix: if(str-length(#{&}) == 0, '.', '');
+  $dot-infix: if(str-length('#{&}') == 0, '.', '');
   &#{$dot-infix}#{utility(
     $name,
     $value,
@@ -162,7 +162,7 @@ $utility-value-delimiter: '' !default;
     $style: $style,
     $breakpoint-delimiter: $breakpoint-delimiter,
     $value-delimiter: $value-delimiter
-  )} {
+  )} {
     @content;
   }
 }
