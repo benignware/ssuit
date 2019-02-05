@@ -2,28 +2,26 @@
   @if type-of($string) == 'string' {
     @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
   }
-  @return $string;
-}
-
-@function ssuit--string-contain($list, $value) {
-  @return not not index($list, $value);
+  @return '#{$string}';
 }
 
 @function ssuit--string-camelize($string) {
-  $progress: $string;
-  $result: '';
-  $exclude: ' ', '-', '–', '—', '_', ',', ';', ':', '.';
+  @if type-of($string) == 'string' {
+    $progress: $string;
+    $result: '';
+    $exclude: ' ', '-', '–', '—', '_', ',', ';', ':', '.';
 
-  @while str-length($progress) > 0  {
-    $char: str-slice($progress, 1, 1);
+    @while str-length($progress) > 0 {
+      $char: str-slice($progress, 1, 1);
 
-    @if ssuit--string-contain($exclude, $char) {
-      $progress: ssuit--string-capitalize(str-slice($progress, 2, 2)) + str-slice($progress, 3);
-    } @else {
-      $result: $result + $char;
-      $progress: str-slice($progress, 2);
+      @if not not index($exclude, $char) {
+        $progress: ssuit--string-capitalize(str-slice($progress, 2, 2)) + str-slice($progress, 3);
+      } @else {
+        $result: $result + $char;
+        $progress: str-slice($progress, 2);
+      }
     }
- }
-
-  @return $result;
+    @return $result;
+  }
+  @return '#{$string}';
 }

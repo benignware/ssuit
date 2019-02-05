@@ -17,7 +17,7 @@ $utility-breakpoint-delimiter: '-' !default;
 $utility-value-delimiter: '' !default;
 
 @function namespace($name: $namespace, $delimiter: $namespace-delimiter) {
-  @return if(str-length($name) > 0, '#{$name}#{$delimiter}', '');
+  @return if(str-length('#{$name}') > 0, '#{$name}#{$delimiter}', '');
 }
 
 @function component(
@@ -61,7 +61,7 @@ $utility-value-delimiter: '' !default;
   $breakpoint-infix: if(str-length($breakpoint) > 0, $breakpoint + $breakpoint-delimiter, '');
   $name-infix: #{$name};
 
-  @if (str-length($value) > 0) {
+  @if (str-length('#{$value}') > 0) {
     @if str-length($value-delimiter) > 0 {
       $name-infix: '#{$name}#{$value-delimiter}#{$value}';
     } @else {
@@ -80,7 +80,7 @@ $utility-value-delimiter: '' !default;
   $name: $namespace,
   $delimiter: $namespace-delimiter
 ) {
-  @if str-length($name) > 0 {
+  @if str-length('#{$name}') > 0 {
     $dot-infix: if(str-length(#{&}) == 0, '.', '');
     &#{$dot-infix}#{namespace(
       $name: $name,
