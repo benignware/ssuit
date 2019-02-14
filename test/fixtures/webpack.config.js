@@ -2,8 +2,6 @@ const path = require('path');
 const context = path.resolve(__dirname, 'src');
 const packageJSON = require('../../package.json');
 
-console.log('packageJSON', packageJSON.name, path.resolve(__dirname, `../../${packageJSON.main}`));
-
 module.exports = (env, { mode = 'production' }) => ({
   mode,
   context,
